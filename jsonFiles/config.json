@@ -1,0 +1,14 @@
+{
+    "name":"FishyBot",
+    "version":"1.6.0",
+    "description":"its kinda fishy :p",
+    "author":"Fish#2455",
+    "master":"325893549071663104",
+    "infochannel":"739211875610525746",
+    "prefix":"f!",
+    "features":[],
+
+    "guilds":["729791412459143278"],
+
+    "membercountcannelname":"Members: "
+}
