@@ -9,9 +9,7 @@ var fs = require("fs");
 
 const MongoClient = require('mongodb').MongoClient;
 
-const  User = require('../database/schemas/User');
-const  CommandModel = require('../database/schemas/Command')
-const  Guild = require('../database/schemas/Guild');
+
 
 
 

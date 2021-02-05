@@ -5,7 +5,7 @@ exports.Interaction =  class Interaction {
         this.raw_interaction = raw_interaction;
 
         this.data = raw_interaction.data;
-        this.args = interaction.data.options;
+        this.args = raw_interaction.data.options;
         this.type = raw_interaction.type;
         
         this.id = raw_interaction.id;
@@ -13,15 +13,19 @@ exports.Interaction =  class Interaction {
 
         this.guild_id = raw_interaction.guild_id;
         this.channel_id = raw_interaction.channel_id;
-        
-        this.member = raw_interaction.member;
-        this.member.id = this.member.user.id
+        this.member_id = raw_interaction.member.user.id;
+
+        this.raw_member = raw_interaction.member;
+        this.raw_member.id = this.member_id;
 
         this.name = this.data.name;
         this.args = this.data.options;
 
         this.msgSent = false;
 
+        this.guild = client.guilds.cache.get(this.guild_id);
+        this.channel = this.guild.channels.cache.get(this.channel_id);
+        this.member = this.guild.members.cache.get(this.member_id);
     }
     async ack(){
         this.msgSent = true
