@@ -4,6 +4,7 @@ exports.Interaction =  class Interaction {
 
         this.raw_interaction = raw_interaction;
 
+        
         this.data = raw_interaction.data;
         this.args = raw_interaction.data.options;
         this.type = raw_interaction.type;
@@ -42,7 +43,7 @@ exports.Interaction =  class Interaction {
         if(options){
             let DATA = Object.assign(DATA, options);
         }
-        return await this.client.api.interactions(this.id, this.token).callback.post( {data: { type: 3, data: DATA}  })
+        return await this.client.api.interactions(this.id, this.token).callback.post( {data: { type: 4, data: DATA}  })
     }
     async sendSilent(message, options){
         let DATA = {flags:64, content: message}

@@ -74,7 +74,6 @@ var very_good_name = async function(client, message) {
 
     // Our standard argument/command name definition.
     if (!command) return;
-    if(!await client.allow_test(command, guild_cache)){return}
     let cmdPath;
     // Grab the command data from the client.commands Enmap
     if (client.commands.has(command)) {

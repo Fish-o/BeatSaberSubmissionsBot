@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 const SubmissionsModel = require('../../database/schemas/Submissions');
 let errorembed = async (msg) => {
-    return new Discord.MessageEmbed.setTitle(msg).setTimestamp().setColor('RED')
+    return new Discord.MessageEmbed().setTitle(msg).setTimestamp().setColor('RED')
 }
 
 
@@ -11,7 +11,12 @@ async function command(member, score, link){
     }else if(!link || link.length < 5){
         return await errorembed('The entered link is invalid');
     }
-
+    let regex = /https:\/\/w*\.*youtube.[a-z]+\/watch\?v=(\w*)/i;
+    let executed = regex.exec(link);
+    if(executed !== null){
+        link = `https://youtu.be/${executed[1].trim()}`
+    }
+    
     let submission = new SubmissionsModel({
         memberid:member.id,
         score:score,
@@ -19,16 +24,16 @@ async function command(member, score, link){
         timestamp:Date.now(),
     });
     await submission.save();
-    return new Discord.MessageEmbed.setTitle('Saved the submission!').setTimestamp().setColor('GREEN').setDescription(
+    return new Discord.MessageEmbed().setTitle('Saved the submission!').setTimestamp().setColor('GREEN').setDescription(
 `Member: ${member}
 Score: \`${score}\`
-Link: \`${link}\``);
+Link: ${link}`);
 } 
 
 
 exports.run = async (client, message, args) => {
     if(!args || !args[0] || !args[1]){
-        return message.channel.send(`Missing arguments: ${client.config.prefix}${help.name} **[score]** **[link]**`)
+        return message.channel.send(`Missing arguments: \`${client.config.prefix}submit [score] [link]\``)
     }
     let score = args.shift();
     let res = await command(message.member, score, args.join(' '));
