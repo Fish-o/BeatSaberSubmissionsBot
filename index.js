@@ -24,7 +24,7 @@ config.token = process.env.TOKEN
 config.dbpath = process.env.DBPATH
 config.OLDDBPATH = process.env.OLDDBPATH
 if(process.env.prefix){
-    config.prefix = process.env.PREFIX;
+    config.prefix = process.env.prefix;
 }
 config.igniteapi = process.env.IGNITEAPI;
 
