@@ -71,14 +71,16 @@ mongoose.connect(client.config.dbpath, {
 let loadEvents = function(){
     return new Promise((resolve, reject) =>{
         console.log('Loading events')
-        fs.readdir("./events/", (err, files) => {
+        fs.readdir(__dirname+"/events/", (err, files) => {
             if (err) return console.error(err);
             let discordEvents = Discord.Constants.Events;
             files.forEach(file => {
-                const event = require(`./events/${file}`);
+                const event = require(__dirname+`/events/${file}`);
                 //let eventName = file.split(".")[0];
-                if(Object.keys(discordEvents).includes(event.conf.event.toUpperCase()) || Object.values(discordEvents).includes(event.conf.event))
+                if(Object.keys(discordEvents).includes(event.conf.event.toUpperCase()) || Object.values(discordEvents).includes(event.conf.event)){
+                    console.log('loading event: '+event.conf.event)
                     client.on(event.conf.event, event.event.bind(null, client));
+                }
                 else{
                     console.log('--------------------'+event.conf.event)
                     client.ws.on(event.conf.event, event.event.bind(null, client));
