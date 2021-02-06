@@ -124,6 +124,7 @@ exports.event = async function(client, message){
     try {
         very_good_name(client, message)
     } catch (e) {
+        console.log(e)
         //Sentry.captureException(e);
     }
     
