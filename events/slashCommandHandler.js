@@ -2,8 +2,8 @@
 
 const axios = require('axios');
 const Discord = require('discord.js')
-const Sentry = require("@sentry/node");
-const Tracing = require("@sentry/tracing");
+//const Sentry = require("@sentry/node");
+//const Tracing = require("@sentry/tracing");
 const { Interaction }  = require('../utils/classes/interaction')
 /*
 

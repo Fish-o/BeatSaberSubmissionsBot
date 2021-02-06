@@ -1,5 +1,5 @@
-const Sentry = require("@sentry/node");
-const Tracing = require("@sentry/tracing");
+//const Sentry = require("@sentry/node");
+//const Tracing = require("@sentry/tracing");
 
 
 const Discord = require('discord.js');
@@ -45,7 +45,7 @@ client.config.songs = client.config.songs || [];
 
 
 
-Sentry.init({
+/*Sentry.init({
     dsn: process.env.SENTRY,
     integrations: [
         new Tracing.Integrations.Mongo(),
@@ -53,7 +53,7 @@ Sentry.init({
     environment: process.env.ENV || 'Unknown',
     debug: true,
     tracesSampleRate: 1.0,
-});
+});*/
 
 
 
@@ -386,7 +386,7 @@ let login = async function(){
 try {
     login()
 } catch (e) {
-    Sentry.captureException(e);
+    //Sentry.captureException(e);
 }
 
 

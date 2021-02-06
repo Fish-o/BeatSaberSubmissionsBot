@@ -1,8 +1,8 @@
 const active = new Map();
 const talkedRecently = new Set();
 
-const Sentry = require("@sentry/node");
-const Tracking  = require("@sentry/tracing");
+//const Sentry = require("@sentry/node");
+//const Tracking  = require("@sentry/tracing");
 
 const Discord = require('discord.js');
 var fs = require("fs");
@@ -104,7 +104,7 @@ var very_good_name = async function(client, message) {
                 }
             };
             
-            Sentry.captureException(e, err_data);
+            //Sentry.captureException(e, err_data);
             message.channel.send('Something went wrong in running the command, this issue has been reported. If it keeps happening and/or is realy anoying feel free to contact '+client.config.author)
             console.log(e)
         }
@@ -124,7 +124,7 @@ exports.event = async function(client, message){
     try {
         very_good_name(client, message)
     } catch (e) {
-        Sentry.captureException(e);
+        //Sentry.captureException(e);
     }
     
 };
