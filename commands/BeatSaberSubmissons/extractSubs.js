@@ -53,7 +53,6 @@ exports.conf = {
 };
   
 const path = require("path");
-const { IdleTransaction } = require('@sentry/tracing');
 exports.help = {
     category: __dirname.split(path.sep).pop(),
     name:"extract",
