@@ -11,7 +11,7 @@ const ms = require("ms");
 
 const mongoose = require('mongoose')
 require("./extensions/ExtendedMessage");
-
+let settingsModel = require('./database/schemas/Settings');
 const client = new Discord.Client({partials: ["MESSAGE","REACTION"], ws: { intents: Discord.Intents.ALL } });
 
 
@@ -37,7 +37,7 @@ client.xpcooldown = {
     time: 15000
 
 }
-client.cachedMessageReactions = new Map();
+client.config.songs = client.config.songs || [];
 
 
 
@@ -108,7 +108,7 @@ client.master = client.config.master
 
 
 
-let loadCommand = function(user, discordSlashCommands){
+let loadCommand = function(user, discordSlashCommands, settings){
     return new Promise((resolve, reject) =>{
         // Loads all the subcategories inside the commands dir
         console.log('Loading commands');
@@ -132,7 +132,7 @@ let loadCommand = function(user, discordSlashCommands){
                 fs.readdir(path, (err, files) => {
                     if (err) return console.error(err);
                     // Go thru all files in the subdir
-                    files.forEach((file) => {
+                    files.forEach(async (file) => {
                         // Check if they end with .js
                         if (!file.endsWith(".js")) return;
                         // Load the command file
@@ -159,17 +159,22 @@ let loadCommand = function(user, discordSlashCommands){
 
                             console.log(`Loading Interaction: ${interaction.name}`);
                             client.setInteractions.push(interaction.name)
-
-                            if(!discordSlashCommands.find(slashCommand => {
-                                slashCommand.name === interaction.name &&
-                                slashCommand.description === interaction.name &&
-                                slashCommand.options === interaction.options
-                            })){
-                                axios.post(`https://discordapp.com/api/applications/${user.id}/commands`, interaction, {headers:{'Authorization': `Bot ${client.config.token}`}})
-                                //client.api.applications(user.id).commands.post({data: interaction})
-                                console.log(`Updated Interaction: ${interaction.name}`)
+                            let songsChoice = interaction.options.find(option =>option.name == 'song')
+                            if(songsChoice){
+                                const index = interaction.options.indexOf(songsChoice)
+                                interaction.options.splice(index, 1)
+                                interaction.options.unshift({
+                                    name:songsChoice.name,
+                                    description:songsChoice.description,
+                                    type:songsChoice.type,
+                                    required:songsChoice.required,
+                                    choices:settings.songs.map(song=>{return {name:song, value:song}})
+                                })
                             }
-
+                            
+                             
+                            let r = await axios.post(`https://discord.com/api/v8/applications/${user.id}/guilds/${client.config.MAINGUILD}/commands`, interaction, {headers:{'Authorization': `Bot ${client.config.token}`}})
+                            console.log('created')
                             client.interactions.set(interaction.name, path+file)
                         }
 
@@ -359,9 +364,18 @@ process.on('SIGINT', async () => {
 let login = async function(){
     let userdata = await axios.get('https://discordapp.com/api/users/@me', {headers:{'Authorization': `Bot ${client.config.token}`}})
     user = userdata.data
-    let discordSlashCommands = await axios.get(`https://discordapp.com/api/applications/${user.id}/commands`, {headers:{'Authorization': `Bot ${client.config.token}`}})
+    let [discordSlashCommands, settings] = await Promise.all([
+        axios.get(`https://discordapp.com/api/applications/${user.id}/guilds/${client.config.MAINGUILD}/commands`, {headers:{'Authorization': `Bot ${client.config.token}`}}),
+        settingsModel.find({})
+    ])
+    if(!settings || !settings[0]){
+        let newdbmodel = new settingsModel({});
+        newdbmodel.save();
+        settings = [{songs:[]}]
+    }
+    client.config.songs = settings[0].songs;
     await Promise.all([
-        loadCommand(user, discordSlashCommands.data),
+        loadCommand(user, discordSlashCommands.data, settings[0]),
         loadEvents()
     ])
     console.log('DONE')

@@ -19,7 +19,7 @@ exports.event = async (client) => {
 
     
     
-    //client.user.setActivity('New Update!');
+    client.user.setActivity('/submit, /topscores', {type:'WATCHING'});
 
     
     

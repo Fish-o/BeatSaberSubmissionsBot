@@ -67,7 +67,7 @@ exports.conf = {
 const path = require("path")
 exports.help = {
     category: __dirname.split(path.sep).pop(),
-    name:"extract",
+    name:"extractmsges",
     description: "a debug command",
     usage: "no usage"
 };

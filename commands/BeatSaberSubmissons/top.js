@@ -21,9 +21,9 @@ const updateTime = 60*1000;
 const maxAge = 6*60*60*1000;
 let cache = {};
 
-async function command(){
+async function command(song){
     if(!cache.data || (cache.age +maxAge < Date.now())){
-        let submissions = await SubmissionsModel.find();
+        let submissions = await SubmissionsModel.find({});
         cache.data = submissions;
         cache.timestamp = Date.now()
         cache.age = Date.now()
@@ -34,8 +34,12 @@ async function command(){
     }
 
     console.log(cache)
-    let embed = new Discord.MessageEmbed().setTitle('Top submissions').setTimestamp().setColor('BLUE');
-    let sorted = cache.data.sort(compare);
+    let embed = new Discord.MessageEmbed().setTitle('Top submissions for song '+song).setTimestamp().setColor('BLUE');
+
+    let song_data = cache.data.filter(cacheSubmission=>cacheSubmission.song === song);
+
+    console.log(song_data)
+    let sorted = song_data.sort(compare);
     if(sorted.length > SEARCHLENGTH){
             console.log(sorted.length-SEARCHLENGTH)
             sorted.splice(-(sorted.length-SEARCHLENGTH),(sorted.length-SEARCHLENGTH))
@@ -54,7 +58,8 @@ exports.run = async (client, message, args) => {
 }
 
 exports.interaction = async(client, interaction, args)=>{
-    let res = await command();
+    const song = args.find(arg=>arg.name === 'song')?.value
+    let res = await command(song);
     interaction.send(res);
 }
 
@@ -63,12 +68,20 @@ exports.conf = {
     guildOnly: false,
     aliases: ['top', 'scores'],
     interaction:{
+        options:[
+            {
+                name:'song',
+                description:'The song to view the top scores of',
+                type:3,
+                required:true,
+                choices:[]
+            }
+        ]
     },
     perms: []
 };
   
 const path = require("path");
-const { search } = require('ffmpeg-static');
 exports.help = {
     category: __dirname.split(path.sep).pop(),
     name:"topscores",
