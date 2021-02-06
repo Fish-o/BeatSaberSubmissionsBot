@@ -65,10 +65,13 @@ var very_good_name = async function(client, message) {
 
     if(!message.guild){console.log(message)}
 
-
+    console.log(client.config.prefix)
+    console.log(client.config)
+    console.log(message.content)
     // Ignore messages not starting with the prefix from the guild, or the global one
     if (message.content.indexOf(client.config.prefix) == 0 ){
         args = message.content.slice(client.config.prefix.length).trim().split(/ +/g);
+        console.log(args)
         command = args.shift().toLowerCase();
     }
 
