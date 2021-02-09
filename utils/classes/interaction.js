@@ -60,7 +60,7 @@ exports.Interaction =  class Interaction {
             return await this.client.api.interactions(this.id, this.token).callback.post( {data: { type: 3, data: DATA}  })
         }
     }
-    /*async delete(time){
+    async delete(time){
         if(time)
             await sleep(time);
         return await this.client.api.webhooks(client.user.id, this.token).messages('@original').delete()
@@ -77,7 +77,7 @@ exports.Interaction =  class Interaction {
         }
         this.client.api.webhooks(client.user.id, this.token).messages.patch(DATA)
     }
-    async editSilent(message, options){
+    /*async editSilent(message, options){
         let DATA = {flags:64, content: message }
         if(options){
             DATA = Object.assign(DATA, options);

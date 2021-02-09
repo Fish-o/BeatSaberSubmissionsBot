@@ -6,6 +6,6 @@ const SubmissionsSchema = new mongoose.Schema({
     score:{ type: Number, require:true },
     link:{ type: String, require:true },
     timestamp:{type: Date, required: true}
-}, { collection:'Submissions'});
+}, { collection:'BsSubmissions'});
 
-const MessageModel = module.exports = mongoose.model('Submissions', SubmissionsSchema);
+const MessageModel = module.exports = mongoose.model('BsSubmissions', SubmissionsSchema);
