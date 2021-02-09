@@ -38,6 +38,6 @@ jobs:
         envkey_ENV: Production
 
 
-    - run: yarn add
+    - run: yarn
     - run: pm2 restart VRPLBot
     
