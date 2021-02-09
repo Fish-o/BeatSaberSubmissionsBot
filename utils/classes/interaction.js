@@ -77,6 +77,13 @@ exports.Interaction =  class Interaction {
         }
         this.client.api.webhooks(client.user.id, this.token).messages.patch(DATA)
     }
+
+    async getRole(roleid){
+        if(!roleid){
+            return undefined;
+        }
+        return this.guild.roles.cache.get(roleid)
+    }
     /*async editSilent(message, options){
         let DATA = {flags:64, content: message }
         if(options){

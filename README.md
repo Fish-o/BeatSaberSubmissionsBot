@@ -5,8 +5,8 @@ The commands working rn:
 
 .) For users:
 ```
-/submit [dropdown of songs] [score] [link]
-/topscores [dropdown of songs]
+/bssubmit [dropdown of songs] [score] [link]
+/bstopscores [dropdown of songs]
 ```
 
 .) For admins:
@@ -92,3 +92,12 @@ exports.conf = {
 };
 
 ```
+
+
+
+
+# To Do
+Convert captain roles into normal roles
+More admin tools, like deleting teams based on a querry
+
+

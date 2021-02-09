@@ -29,7 +29,7 @@ async function command(client, member, song, score, link){
         song:song,
         score:score,
         link:link,
-        timestamp:Date.now(),
+        timestamp:new Date().getTime(),
     });
     await submission.save();
     return new Discord.MessageEmbed().setTitle('Saved the submission!').setTimestamp().setColor('GREEN').setDescription(

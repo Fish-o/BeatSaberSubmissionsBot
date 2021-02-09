@@ -33,15 +33,12 @@ async function command(song){
         cache.timestamp = Date.now();
     }
 
-    console.log(cache)
     let embed = new Discord.MessageEmbed().setTitle('Top submissions for song '+song).setTimestamp().setColor('BLUE');
 
     let song_data = cache.data.filter(cacheSubmission=>cacheSubmission.song === song);
 
-    console.log(song_data)
     let sorted = song_data.sort(compare);
     if(sorted.length > SEARCHLENGTH){
-            console.log(sorted.length-SEARCHLENGTH)
             sorted.splice(-(sorted.length-SEARCHLENGTH),(sorted.length-SEARCHLENGTH))
     }
     let description = ``;

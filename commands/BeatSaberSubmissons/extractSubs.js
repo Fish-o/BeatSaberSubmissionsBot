@@ -3,7 +3,36 @@ const SubmissionsModel = require('../../database/schemas/BsSubmissions');
 
 async function command(guild, song){
     let submissions = await SubmissionsModel.find({});
-    if(song){
+    if(!submissions){
+        return "NOTHING"
+    }
+    if(!song){
+    }else if(song === "top_all"){
+        console.log('asdf')
+        let songs = submissions.reduce((all, subm)=>{
+            if(!all || !all[0]){
+                all = [subm.song]
+            } else if(!all.includes(subm.song)){
+                all.push(subm.song)
+            }
+            return all;
+        })
+        console.log(songs)
+        let topSubss = []
+        songs.forEach(song=>{
+            let max_sub = {score:0};
+            submissions.filter(sub=>sub.song == song)?.forEach(sub=>{
+                if(sub.score > max_sub.score ){
+                    max_sub = sub;
+                }
+            })
+            if(max_sub.score !== 0){
+                topSubss.push(max_sub);
+            }
+        })
+        submissions = topSubss;
+        console.log(submissions)
+    }else{
         submissions = submissions.filter(sub=>sub.song==song)
     }
     let out = `Song,Score,Discord Tag,Link,Date&Time (mm/dd/yyyy)\n`;

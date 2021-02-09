@@ -15,6 +15,8 @@
         "geolib": "^3.3.1",
         "grapheme-splitter": "^1.0.4",
         "moment": "^2.27.0",
+        "moment-timezone": "^0.5.33",
+        "momentjs": "^2.0.0",
         "mongodb": "^3.6.0",
         "mongoose": "^5.10.7",
         "ms": "^2.1.2",
@@ -30,5 +32,8 @@
         "test": "node index.js"
     },
     "main": "index.js",
-    "devDependencies": {}
+    "devDependencies": {},
+    "prettier":{
+        "tabWidth": 4
+    }
 }

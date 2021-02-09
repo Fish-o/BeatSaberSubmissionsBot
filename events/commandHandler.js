@@ -64,21 +64,15 @@ var very_good_name = async function(client, message) {
 
 
     if(!message.guild){console.log(message)}
-
-    console.log(client.config.prefix)
-    console.log(client.config)
-    console.log(message.content)
     // Ignore messages not starting with the prefix from the guild, or the global one
     if (message.content.indexOf(client.config.prefix) == 0 ){
+        console.log(message.content)
         args = message.content.slice(client.config.prefix.length).trim().split(/ +/g);
-        console.log(args)
         command = args.shift().toLowerCase();
     }
-
+    console.log(client.config.prefix)
     // Our standard argument/command name definition.
-    console.log('bev1')
     if (!command) return;
-    console.log('af1')
     let cmdPath;
     // Grab the command data from the client.commands Enmap
     if (client.commands.has(command)) {
@@ -86,14 +80,10 @@ var very_good_name = async function(client, message) {
     } else if (client.aliases.has(command)) {
         cmdPath = client.commands.get(client.aliases.get(command));
     }
-    console.log('bev2')
     if (!cmdPath) return;
-    console.log('af2')
     const cmd = client.commandFiles.get(cmdPath);
     // If that command doesn't exist, silently exit and do nothing
-    console.log('bev3')
     if (!cmd) return;
-    console.log('af3')
 
 
 
