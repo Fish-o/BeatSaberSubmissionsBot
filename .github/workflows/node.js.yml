@@ -12,7 +12,7 @@ on:
 jobs:
   deploy:
 
-    runs-on: raspi
+    runs-on: raspi4
 
     strategy:
       matrix:
