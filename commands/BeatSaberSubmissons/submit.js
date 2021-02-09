@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const SubmissionsModel = require('../../database/schemas/Submissions');
+const SubmissionsModel = require('../../database/schemas/BsSubmissions');
 let errorembed = async (msg, desc) => {
     let embed = new Discord.MessageEmbed().setTitle(msg).setTimestamp().setColor('RED');
     if(desc){
@@ -92,7 +92,7 @@ exports.conf = {
 const path = require("path")
 exports.help = {
     category: __dirname.split(path.sep).pop(),
-    name:"submit",
+    name:"bssubmit",
     description: "Submit your bs score",
     usage: "asdfasdf"
 };

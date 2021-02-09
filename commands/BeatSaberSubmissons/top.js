@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const SubmissionsModel = require('../../database/schemas/Submissions');
+const SubmissionsModel = require('../../database/schemas/BsSubmissions');
 
 let errorembed = async (msg) => {
     return new Discord.MessageEmbed().setTitle(msg).setTimestamp().setColor('RED')
@@ -84,7 +84,7 @@ exports.conf = {
 const path = require("path");
 exports.help = {
     category: __dirname.split(path.sep).pop(),
-    name:"topscores",
+    name:"bstopscores",
     description: "View the top submissions",
     usage: "asdfasdf"
 };

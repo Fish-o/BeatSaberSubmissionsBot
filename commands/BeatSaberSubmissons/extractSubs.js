@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const SubmissionsModel = require('../../database/schemas/Submissions');
+const SubmissionsModel = require('../../database/schemas/BsSubmissions');
 
 async function command(guild, song){
     let submissions = await SubmissionsModel.find({});
@@ -37,7 +37,7 @@ exports.run = async (client, message, args) => {
 exports.conf = {
     enabled: true,
     guildOnly: false,
-    aliases: [],
+    aliases: ['extractbs'],
     /*interaction:{
         options:[
             {
@@ -55,7 +55,7 @@ exports.conf = {
 const path = require("path");
 exports.help = {
     category: __dirname.split(path.sep).pop(),
-    name:"extract",
+    name:"bsextract",
     description: "View the top submissions",
     usage: "asdfasdf"
 };
