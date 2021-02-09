@@ -1,9 +1,19 @@
-# FishyBot
-[Invite the bot!](https://discord.com/api/oauth2/authorize?client_id=721313666405761024&permissions=8&scope=bot)
+# Beatsaber Submissions Bot
 
-[FishyBot website](https://fishman.live/)
+Not really sure what this bot will be used for, but it has some cool features!
+The commands working rn:
 
-A crappy discord bot
+.) For users:
+```
+/submit [dropdown of songs] [score] [link]
+/topscores [dropdown of songs]
+```
+
+.) For admins:
+```
+${prefix}setsongs [song1] [song2] [song3] etc
+${prefix}extract [song (returns data from all song, if none given)]
+```
 
 
 To run the bot yourself, you will need a .env file in the root of the project with in it:
@@ -11,12 +21,7 @@ To run the bot yourself, you will need a .env file in the root of the project wi
 TOKEN=your discord bot client token
 DBPATH=the path to a mongodb database
 ```
-To make use of all features, also add this:
-```
-prefix=
-HYPIXELTOKEN=
-IGNITEAPI=
-```
+(also make sure to set the config.json file under jsonFiles/ correctly, or the bot wont work.
 
 A basic command example:
 ```js
@@ -56,7 +61,7 @@ exports.conf = {
         options: []
     },
 	aliases: [], 		// Alliasses for commands
-	perms: [ 		// Permisions users need to use the command
+	perms: [ 		// Permisions users need to use the command (this doesnt work, use FishyBot)
 	]	// https://anidiots.guide/understanding/roles#addendum-permission-names
 };
 
