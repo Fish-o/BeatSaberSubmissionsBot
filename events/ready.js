@@ -19,7 +19,7 @@ exports.event = async (client) => {
 
     
     
-    client.user.setActivity('/submit, /topscores', {type:'WATCHING'});
+    client.user.setActivity('/bssubmit, /echosubmit', {type:'WATCHING'});
 
     
     

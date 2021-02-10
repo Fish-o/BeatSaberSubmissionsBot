@@ -63,8 +63,11 @@ ${
           }🎉`
         : `Winner: \`not determend yet\``
 }
-`;
-        out += "\n";
+`;  
+        if(match.subs && match.subs[0]){
+            out +=`\nSubs used: \`${match.subs.join('`, `')}\``
+        }
+        out += `\n`;
         done.push(match);
     });
     interaction.send(

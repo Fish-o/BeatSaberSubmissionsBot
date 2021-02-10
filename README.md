@@ -99,5 +99,9 @@ exports.conf = {
 # To Do
 Convert captain roles into normal roles
 More admin tools, like deleting teams based on a querry
+top_all
+
+echo:
+subs used
 
 
