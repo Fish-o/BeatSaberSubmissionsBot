@@ -1,5 +1,6 @@
 exports.Interaction =  class Interaction {
     constructor(client, raw_interaction) {
+        console.log('Mde ')
         this.client = client
 
         this.raw_interaction = raw_interaction;

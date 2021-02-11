@@ -43,17 +43,18 @@ const { Interaction }  = require('../utils/classes/interaction')
 
 
 exports.event = async (client, raw_interaction) => {
+    console.log(raw_interaction)
     let interaction = new Interaction(client, raw_interaction);
 
     // Define the command and the args
     const commandName = interaction.name.toLowerCase();
     const args = interaction.args;
-    
+    console.log(commandName)
     if(!client.interactions.has(commandName)) return;
-
+    console.log('found?')
     let cmd = client.commandFiles.get(client.interactions.get(commandName))
     if(!cmd) return;
-
+    console.log('Found!')
     cmd.interaction(client, interaction, args)
 };
 
