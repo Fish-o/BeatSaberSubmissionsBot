@@ -11,7 +11,7 @@ let errorembed = async (msg, desc) => {
     return embed;
 };
 
-let notifyChannel = "751167444453949472";
+let notifyChannel = "809531600961798198";
 async function command(
     client,
     member,

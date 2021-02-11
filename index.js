@@ -175,7 +175,7 @@ let loadCommand = function(user, discordSlashCommands, settings){
                             }
                             
                              
-                            //let r = await axios.post(`https://discord.com/api/v8/applications/${user.id}/guilds/${client.config.MAINGUILD}/commands`, interaction, {headers:{'Authorization': `Bot ${client.config.token}`}})
+                            let r = await axios.post(`https://discord.com/api/v8/applications/${user.id}/guilds/${client.config.MAINGUILD}/commands`, interaction, {headers:{'Authorization': `Bot ${client.config.token}`}})
                             console.log('created')
                             client.interactions.set(interaction.name, path+file)
                         }
