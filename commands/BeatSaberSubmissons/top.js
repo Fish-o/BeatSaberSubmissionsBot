@@ -48,7 +48,7 @@ async function command(song){
     return embed.setDescription(description);
 } 
 
-
+/*
 exports.run = async (client, message, args) => {
     let res = await command();
     message.channel.send(res);
@@ -58,7 +58,7 @@ exports.interaction = async(client, interaction, args)=>{
     const song = args.find(arg=>arg.name === 'song')?.value
     let res = await command(song);
     interaction.send(res);
-}
+}*/
 
 exports.conf = {
     enabled: true,

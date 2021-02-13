@@ -39,7 +39,7 @@ Score: \`${score}\`
 Link: ${link}`);
 } 
 
-
+/*
 exports.run = async (client, message, args) => {
     if(!args || !args[0] || !args[1] || !args[2]){
         return message.channel.send(`Missing arguments: \`${client.config.prefix}submit [song] [score] [link]\``)
@@ -57,7 +57,7 @@ exports.interaction = async(client, interaction, args)=>{
     let song = args.find(arg=>arg.name =='song')?.value;
     let res = await command(client, interaction.member, song, score, link);
     interaction.send(res);
-}
+}*/
 
 exports.conf = {
     enabled: true,

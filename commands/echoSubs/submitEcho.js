@@ -23,6 +23,11 @@ async function command(
     // Check if the entered scores are valid
     let failed;
     [round1, round2, round3].forEach((round) => {
+        if(['n/a', 'na', 'n-a'].includes(round.toLowerCase()) && [round1, round2, round3].indexOf(round) == 2){
+            round3="0-0"
+            return;
+        }
+
         let parts = round.trim().split("-");
         if (parts.length !== 2) {
             failed = `The entered score: \`${round}\` is invalid. \nUse this format: \`yourgoals-theirgoals\``;
