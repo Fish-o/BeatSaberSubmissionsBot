@@ -45,14 +45,14 @@ async function command(
 
     // Create score object, and reverse score object.
     const SCORE_OBJ = {
-        round1: round1.split("-"),
-        round2: round2.split("-"),
-        round3: round3.split("-"),
+        round1: round1.split("-").map(x => parseInt(x)),
+        round2: round2.split("-").map(x => parseInt(x)),
+        round3: round3.split("-").map(x => parseInt(x)),
     };
     const REVERSE_SCORE_OBJ = {
-        round1: round1.split("-").reverse(),
-        round2: round2.split("-").reverse(),
-        round3: round3.split("-").reverse(),
+        round1: round1.split("-").reverse().map(x => parseInt(x)),
+        round2: round2.split("-").reverse().map(x => parseInt(x)),
+        round3: round3.split("-").reverse().map(x => parseInt(x)),
     };
 
     // Check if the member has the permissions to submit this
