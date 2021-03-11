@@ -336,7 +336,7 @@ const testmailClient = new GraphQLClient(
 );
 
 let users = new Discord.Collection();
-users.set("conner.hof@joseco.nl", "325893549071663104");
+users.set("conner.hof@joseco.nl", "570031434278895636");
 //users.set("wurtis@me.com", "649047869558489101");
 
 const tracked_channels = ["729793326160674828", "746000591326806046"];
