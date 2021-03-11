@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html  >
+    <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,500;0,900;1,100;1,200;1,400;1,500&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            body {
+                margin: 30px;
+                background-color: #36393f;
+                font-family: "Poppins", sans-serif;
+            }
+            .avatar {
+                border-radius: 50%;
+                width: 40px;
+            }
+
+            .text {
+                margin: 0px;
+                color: #DCDDDE;
+                font-weight: 300;
+                font-size: 13px;
+                width: 80%;
+                display: block;
+            }
+
+
+            .top {
+                display:inline-block;
+                display: flex;
+                
+            }
+            .username {
+                float:left;
+                margin: 0px;
+
+                font-weight: 500;
+                align-self: baseline;
+                
+                color: #ffffff;
+            }
+            .date {
+                float:right;
+                margin: 0px;
+                margin-left: 5px;
+
+                font-weight: 300;
+                align-self: center;
+                
+                color: #60646B;
+            }
+
+            .column1 {
+                float: left;
+                width: 50px;
+            }
+            .column2 {
+                float: left;
+                width: 80%;
+            }
+
+            /* Clear floats after the columns */
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="message">
+            <div class="row">
+                <div class="column1">
+                <img
+                    class="avatar"
+                    src="${message.author.avatarURL()}"
+                />
+                </div>
+                <div class="message-body column2">
+                    <div class="top">
+                        <h5 class="username">${message.author.username}</h3>
+                        <h6 class="date">${date}</h4>
+                    </div>
+                
+                    <div class="text" markdown="1"> ${message.content} </div>
+                
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

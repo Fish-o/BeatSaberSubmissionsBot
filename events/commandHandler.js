@@ -70,7 +70,6 @@ var very_good_name = async function(client, message) {
         args = message.content.slice(client.config.prefix.length).trim().split(/ +/g);
         command = args.shift().toLowerCase();
     }
-    console.log(client.config.prefix)
     // Our standard argument/command name definition.
     if (!command) return;
     let cmdPath;

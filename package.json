@@ -4,6 +4,7 @@
     "description": "A crappy discord bot",
     "dependencies": {
         "@discordjs/opus": "^0.3.2",
+        "@testmail.app/graphql-request": "^1.8.4",
         "axios": "^0.21.1",
         "bad-words": "^3.0.3",
         "canvacord": "^5.0.7",
@@ -14,6 +15,7 @@
         "ffmpeg-static": "^4.2.2",
         "geolib": "^3.3.1",
         "grapheme-splitter": "^1.0.4",
+        "mailgun-js": "^0.22.0",
         "moment": "^2.27.0",
         "moment-timezone": "^0.5.33",
         "momentjs": "^2.0.0",
@@ -32,8 +34,7 @@
         "test": "node index.js"
     },
     "main": "index.js",
-    "devDependencies": {},
-    "prettier":{
+    "prettier": {
         "tabWidth": 4
     }
 }
