@@ -339,7 +339,7 @@ let users = new Discord.Collection();
 users.set("conner.hof@joseco.nl", "570031434278895636");
 //users.set("wurtis@me.com", "649047869558489101");
 
-const tracked_channels = ["729793326160674828", "746000591326806046"];
+const tracked_channels = ["729793326160674828", "768651286497198111", "768651286497198111"];
 const refreshtime = 10 * 60 * 1000;
 let last_sent_message = {};
 
