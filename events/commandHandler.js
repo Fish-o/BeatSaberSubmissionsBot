@@ -83,7 +83,7 @@ var very_good_name = async function(client, message) {
     const cmd = client.commandFiles.get(cmdPath);
     // If that command doesn't exist, silently exit and do nothing
     if (!cmd) return;
-
+    
 
 
     if (talkedRecently.has(message.author.id)) {
@@ -111,7 +111,7 @@ var very_good_name = async function(client, message) {
         setTimeout(() => {
         // Removes the user from the set after a minute
         talkedRecently.delete(message.author.id);
-        }, 1500);
+        }, 1100);
     }
 
 

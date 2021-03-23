@@ -32,9 +32,9 @@ let config = require("./jsonFiles/config.json");
 config.token = process.env.TOKEN;
 config.dbpath = process.env.DBPATH;
 config.OLDDBPATH = process.env.OLDDBPATH;
-if (process.env.prefix) {
+/*if (process.env.prefix) {
     config.prefix = process.env.prefix;
-}
+}*/
 config.igniteapi = process.env.IGNITEAPI;
 
 client.config = config;
@@ -185,7 +185,7 @@ let loadCommand = function (user, discordSlashCommands, settings) {
                                 });
                             }
 
-                            //let r = await axios.post(`https://discord.com/api/v8/applications/${user.id}/guilds/${client.config.MAINGUILD}/commands`, interaction, {headers:{'Authorization': `Bot ${client.config.token}`}})
+                            let r = await axios.post(`https://discord.com/api/v8/applications/${user.id}/guilds/${client.config.MAINGUILD}/commands`, interaction, {headers:{'Authorization': `Bot ${client.config.token}`}}).catch(err=>{console.log(err.response.status)})
                             console.log("created");
                             client.interactions.set(
                                 interaction.name,
@@ -327,6 +327,38 @@ new Promise(async(resolve) =>{
 });
 
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 const GraphQLClient = require("@testmail.app/graphql-request").GraphQLClient;
 const testmailClient = new GraphQLClient(
     // API endpoint:
@@ -490,3 +522,4 @@ setInterval(function () {
             }
         });
 }, 10000);
+*/
